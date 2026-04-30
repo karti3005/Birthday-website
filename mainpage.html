@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday 🎂</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+
+<style>
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #ffd6e0, #fff3c7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* 🎈 Hanging Decorations */
+.decorations {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    pointer-events: none;
+}
+
+.hang {
+    width: 60px;
+    animation: swing 2s ease-in-out infinite alternate;
+    transform-origin: top;
+}
+
+.h1 { animation-delay: 0s; }
+.h2 { animation-delay: 0.5s; }
+.h3 { animation-delay: 1s; }
+
+@keyframes swing {
+    from { transform: rotate(5deg); }
+    to { transform: rotate(-5deg); }
+}
+
+/* 🎊 Confetti */
+.confetti-container {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+
+.confetti-container span {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    top: -10px;
+    animation: fall linear infinite;
+}
+
+/* Colors + positions */
+.confetti-container span:nth-child(1) { left: 10%; background: #ff4d6d; animation-duration: 3s; }
+.confetti-container span:nth-child(2) { left: 20%; background: #ffbe0b; animation-duration: 4s; }
+.confetti-container span:nth-child(3) { left: 30%; background: #3a86ff; animation-duration: 3.5s; }
+.confetti-container span:nth-child(4) { left: 40%; background: #8338ec; animation-duration: 4.5s; }
+.confetti-container span:nth-child(5) { left: 50%; background: #fb5607; animation-duration: 3s; }
+.confetti-container span:nth-child(6) { left: 60%; background: #ff006e; animation-duration: 4s; }
+.confetti-container span:nth-child(7) { left: 70%; background: #06d6a0; animation-duration: 3.2s; }
+.confetti-container span:nth-child(8) { left: 80%; background: #ffd166; animation-duration: 4.2s; }
+.confetti-container span:nth-child(9) { left: 90%; background: #118ab2; animation-duration: 3.8s; }
+.confetti-container span:nth-child(10){ left: 95%; background: #ef476f; animation-duration: 4.3s; }
+
+@keyframes fall {
+    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+}
+
+/* Main Container */
+.container {
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+h1 {
+    font-family: 'Pacifico', cursive;
+    color: #ff4d6d;
+    font-size: 3rem;
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: fadeIn 1s ease forwards;
+    animation-delay: 3s;
+}
+
+/* Cake */
+.cake {
+    position: relative;
+    width: 200px;
+    margin: auto;
+}
+
+.layer {
+    width: 200px;
+    height: 60px;
+    background: #ffb3c6;
+    border-radius: 10px;
+    margin: 5px 0;
+    box-shadow: inset 0 -5px #ff8fab;
+    transform: scaleY(0);
+    transform-origin: bottom;
+}
+
+.layer1 {
+    animation: build 0.6s ease forwards;
+    animation-delay: 0.3s;
+}
+
+.layer2 {
+    animation: build 0.6s ease forwards;
+    animation-delay: 1s;
+}
+
+.icing {
+    width: 200px;
+    height: 20px;
+    background: #fff;
+    border-radius: 10px;
+    position: relative;
+    top: -10px;
+    transform: scaleY(0);
+    transform-origin: bottom;
+    animation: build 0.5s ease forwards;
+    animation-delay: 1.7s;
+}
+
+.candle {
+    width: 10px;
+    height: 40px;
+    background: #6a4c93;
+    margin: auto;
+    position: relative;
+    opacity: 0;
+    animation: fadeIn 0.5s forwards;
+    animation-delay: 2.3s;
+}
+
+.flame {
+    width: 12px;
+    height: 20px;
+    background: radial-gradient(circle, #ffcc00, #ff6600);
+    border-radius: 50%;
+    position: absolute;
+    top: -20px;
+    left: -1px;
+    animation: flicker 0.2s infinite alternate;
+}
+
+/* Animations */
+@keyframes build {
+    to { transform: scaleY(1); }
+}
+
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
+@keyframes flicker {
+    from { transform: scale(1); opacity: 1; }
+    to { transform: scale(1.2); opacity: 0.7; }
+}
+
+/* Text + Button */
+.message {
+    margin-top: 20px;
+    font-size: 1.2rem;
+    color: #333;
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+    animation-delay: 3.5s;
+}
+
+.photo-hangers {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    pointer-events: none;
+}
+
+/* Each strip positioned manually */
+.photo-strip {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: swing 3s ease-in-out infinite alternate;
+}
+
+/* LEFT SIDE */
+.s1 { left: 5%; animation-delay: 0s; }
+.s2 { left: 25%; animation-delay: 0.6s; }
+
+/* RIGHT SIDE */
+.s3 { right: 25%; animation-delay: 1.2s; }
+.s4 { right: 5%; animation-delay: 1.8s; }
+
+/* String */
+.string {
+    width: 2px;
+    height: 140px;
+    background: #555;
+}
+
+/* Image */
+.photo-strip img {
+    width: 110px;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 4px solid white;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.25);
+}
+/* Wrapper */
+.memory-wrapper {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    overflow: hidden;
+    padding: 15px 0;
+    backdrop-filter: blur(6px);
+}
+
+/* Moving track */
+.memory-track {
+    display: flex;
+    gap: 20px;
+    width: max-content;
+    animation: scrollLoop 20s linear infinite;
+}
+
+/* Images */
+.memory-track img {
+    width: 130px;
+    height: 95px;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 3px solid white;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    cursor: pointer;
+    position: relative;
+}
+
+/* POP-UP EFFECT */
+.memory-track img:hover {
+    transform: scale(1.2) translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+    z-index: 10;
+}
+
+/* Infinite scroll animation */
+@keyframes scrollLoop {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}
+.memory-track {
+    animation: scrollLoop 35s linear infinite;
+}
+.cake {
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from { filter: drop-shadow(0 0 5px #ff8fab); }
+    to { filter: drop-shadow(0 0 20px #ff4d6d); }
+}
+.hearts span {
+    position: absolute;
+    bottom: -20px;
+    font-size: 20px;
+    opacity: 0.6;
+    animation: floatUp 6s linear infinite;
+}
+
+/* Different positions + delays */
+.hearts span:nth-child(1){ left:10%; animation-delay:0s;}
+.hearts span:nth-child(2){ left:30%; animation-delay:2s;}
+.hearts span:nth-child(3){ left:50%; animation-delay:4s;}
+.hearts span:nth-child(4){ left:70%; animation-delay:1s;}
+.hearts span:nth-child(5){ left:90%; animation-delay:3s;}
+
+@keyframes floatUp {
+    from {
+        transform: translateY(0);
+        opacity: 0.6;
+    }
+    to {
+        transform: translateY(-110vh);
+        opacity: 0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- 🎈 Hanging Images -->
+<div class="decorations">
+    <img src="https://cdn-icons-png.flaticon.com/512/3468/3468371.png" class="hang h1">
+    <img src="https://cdn-icons-png.flaticon.com/512/3468/3468371.png" class="hang h2">
+    <img src="https://cdn-icons-png.flaticon.com/512/3468/3468371.png" class="hang h3">
+</div>
+<div class="photo-hangers">
+
+    <div class="photo-strip s1">
+        <div class="string"></div>
+        <img src="./WhatsApp Image 2026-04-30 at 10.54.08 AM (1).jpeg">
+    </div>
+
+    <div class="photo-strip s2">
+        <div class="string"></div>
+        <img src="./WhatsApp Image 2026-04-30 at 10.54.08 AM.jpeg">
+    </div>
+
+    <div class="photo-strip s3">
+        <div class="string"></div>
+        <img src="./WhatsApp Image 2026-04-30 at 10.54.09 AM (1).jpeg">
+    </div>
+
+    <div class="photo-strip s4">
+        <div class="string"></div>
+        <img src="./WhatsApp Image 2026-04-30 at 10.54.09 AM.jpeg">
+    </div>
+
+</div>
+<div class="hearts">
+    <span>💖</span>
+    <span>💖</span>
+    <span>💖</span>
+    <span>💖</span>
+    <span>💖</span>
+</div>
+
+<!-- 🎊 Confetti -->
+<div class="confetti-container">
+    <span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span>
+</div>
+
+<div class="container">
+    <h1>Happy 19th Birthday </h1>
+
+    <div class="cake">
+        <div class="candle">
+            <div class="flame"></div>
+        </div>
+        <div class="icing"></div>
+        <div class="layer layer2"></div>
+        <div class="layer layer1"></div>
+    </div>
+
+    <div class="message">Wishing you lots of happiness, cake, and smiles 💖</div>
+
+   
+</div>
+<div class="memory-wrapper">
+    <div class="memory-track">
+
+        <!-- ORIGINAL 15 -->
+        <img src="./WhatsApp Image 2026-04-30 at 12.23.06 PM.jpeg">
+        <img src="./WhatsApp Image 2026-04-30 at 11.24.51 AM (1).jpeg ">
+        <img src="./WhatsApp Image 2026-04-30 at 11.47.09 AM.jpeg">
+        <img src="./WhatsApp Image 2026-04-30 at 11.47.08 AM.jpeg">
+        <img src="./WhatsApp Image 2026-04-30 at 11.47.05 AM.jpeg">
+        <img src="./WhatsApp Image 2026-04-30 at 11.47.08 AM (1).jpeg">
+        <img src="./WhatsApp Image 2026-04-30 at 11.47.08 AM (2).jpeg">
+        <img src="./WhatsApp Image 2026-04-30 at 11.47.05 AM (1).jpeg">
+        <img src="./WhatsApp Image 2026-04-30 at 11.45.40 AM.jpeg">
+        <img src="./WhatsApp Image 2026-04-30 at 11.45.32 AM.jpeg">
+        <img src="./WhatsApp Image 2026-04-30 at 11.30.41 AM.jpeg">
+        <img src="./WhatsApp Image 2026-04-30 at 11.30.09 AM.jpeg">
+        <img src="./WhatsApp Image 2026-04-30 at 11.24.51 AM.jpeg">
+        <img src="./WhatsApp Image 2026-04-30 at 11.24.50 AM.jpeg">
+        <img src="./WhatsApp Image 2026-04-30 at 10.54.08 AM.jpeg">
+
+        <img src="./WhatsApp Image 2026-04-30 at 12.23.06 PM.jpeg">
+        <img src="./WhatsApp Image 2026-04-30 at 12.23.06 PM (1).jpeg">
+        <img src="./WhatsApp Image 2026-04-30 at 11.47.09 AM.jpeg">
+        <img src="./WhatsApp Image 2026-04-30 at 11.47.08 AM.jpeg">
+        <img src="./WhatsApp Image 2026-04-30 at 11.47.05 AM.jpeg">
+        <img src="./WhatsApp Image 2026-04-30 at 11.47.08 AM (1).jpeg">
+        <img src="./WhatsApp Image 2026-04-30 at 11.47.08 AM (2).jpeg">
+        <img src="./WhatsApp Image 2026-04-30 at 11.47.05 AM (1).jpeg">
+        <img src="./WhatsApp Image 2026-04-30 at 11.45.40 AM.jpeg">
+        <img src="./WhatsApp Image 2026-04-30 at 11.45.32 AM.jpeg">
+        <img src="./WhatsApp Image 2026-04-30 at 11.30.41 AM.jpeg">
+        <img src="./WhatsApp Image 2026-04-30 at 11.30.09 AM.jpeg">
+        <img src="./WhatsApp Image 2026-04-30 at 11.24.51 AM.jpeg">
+        <img src="./WhatsApp Image 2026-04-30 at 11.24.50 AM.jpeg">
+        <img src="./WhatsApp Image 2026-04-30 at 10.54.08 AM.jpeg">
+        
+
+    </div>
+</div>
+</div>
+
+</body>
+</html>
